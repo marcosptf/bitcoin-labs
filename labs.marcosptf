@@ -2,6 +2,31 @@
 #bitcoin-labs #
 ###############
 
+###########################
+#tarefas para realizar
+1.aprendizado da estrutura de arquivos do projeto
+
+2.leitura do contributing
+
+
+3.leitura do livro:
+Mastering bitcoin
+https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch01.asciidoc
+
+4.leitura do livro:
+Mastering the Lightning Network!
+https://github.com/lnbook/lnbook/blob/develop/01_introduction.asciidoc
+
+5.realizacao da build localhost no fedora
+subindo local e rodando os testes
+
+6.verificar possibilidades na contribuicao
+->escrevendo cobertura de testes com python
+->verificando bugs na issues no github
+->verificando e lendo novos codigos no MR
+
+
+
 #####################################
 #estrutura de diretorios do bitcoin
 .tx/
@@ -17,8 +42,17 @@ src/
 test/
 
 
+
+
+#####################
+#executar testes
+test/functional/test_runner.py
+
+
 #####################
 #arquivos de configs
+
+
 
 
 ###########################
@@ -30,93 +64,85 @@ make # use "-j N" for N parallel jobs
 make install # optional
 ```
 
+
 Memory Requirements
 --------------------
-
 C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of
 memory available when compiling Bitcoin Core. On systems with less, gcc can be
 tuned to conserve memory with additional CXXFLAGS:
+./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"
 
-
-    ./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768"
-
-Alternatively, or in addition, debugging information can be skipped for compilation. The default compile flags are
+Alternatively, or in addition, debugging information can be skipped for 
+compilation. The default compile flags are
 `-g -O2`, and can be changed with:
+./configure CXXFLAGS="-O2"
 
-    ./configure CXXFLAGS="-O2"
-
-Finally, clang (often less resource hungry) can be used instead of gcc, which is used by default:
-
-    ./configure CXX=clang++ CC=clang
+Finally, clang (often less resource hungry) can be used instead of gcc, 
+which is used by default:
+./configure CXX=clang++ CC=clang
 
 
-### Fedora
+##########################################
+# Fedora - Dependency Build Instructions #
+##########################################
+#Build requirements:
+#Now, you can either build from self-compiled [depends](/depends/README.md) or install the required dependencies:
+#instalacao basica
+sudo dnf install -y gcc-c++ libtool make autoconf automake python3  \
+libevent-devel boost-devel sqlite sqlite-devel
 
-#### Dependency Build Instructions
+#instalacao completa
+sudo dnf install  -y gcc-c++ libtool make autoconf automake python3 \
+libevent-devel boost-devel sqlite sqlite-devel qt5-qttools-devel qt5-\
+qtbase-devel qrencode-devel qt5-qtwayland systemtap zeromq-devel  \
+libdb4-devel libdb4-cxx-devel
 
-Build requirements:
-
-    sudo dnf install gcc-c++ libtool make autoconf automake python3
-
-Now, you can either build from self-compiled [depends](/depends/README.md) or install the required dependencies:
-
-    sudo dnf install libevent-devel boost-devel
-
-SQLite is required for the descriptor wallet:
-
-    sudo dnf install sqlite-devel
 
 Berkeley DB is required for the legacy wallet:
+sudo dnf install libdb4-devel libdb4-cxx-devel
 
-    sudo dnf install libdb4-devel libdb4-cxx-devel
-
-Newer Fedora releases, since Fedora 33, have only `libdb-devel` and `libdb-cxx-devel` packages, but these will install
-Berkeley DB 5.3 or later. This will break binary wallet compatibility with the distributed executables, which
-are based on Berkeley DB 4.8. If you do not care about wallet compatibility,
-pass `--with-incompatible-bdb` to configure. Otherwise, you can build Berkeley DB [yourself](#berkeley-db).
-
-To build Bitcoin Core without wallet, see [*Disable-wallet mode*](#disable-wallet-mode)
-
+Newer Fedora releases, since Fedora 33, have only `libdb-devel` and 
+`libdb-cxx-devel` packages, but these will install
+Berkeley DB 5.3 or later. 
+This will break binary wallet compatibility with the distributed executables, 
+which are based on Berkeley DB 4.8. If you do not care about wallet 
+compatibility, pass `--with-incompatible-bdb` to configure. 
+Otherwise, you can build Berkeley DB [yourself](#berkeley-db).
+To build Bitcoin Core without wallet, see 
+[*Disable-wallet mode*](#disable-wallet-mode)
 Optional port mapping libraries (see: `--with-miniupnpc` and `--with-natpmp`):
-
-    sudo dnf install miniupnpc-devel libnatpmp-devel
+sudo dnf install miniupnpc-devel libnatpmp-devel
 
 ZMQ dependencies (provides ZMQ API):
-
-    sudo dnf install zeromq-devel
+sudo dnf install zeromq-devel
 
 User-Space, Statically Defined Tracing (USDT) dependencies:
+sudo dnf install systemtap
 
-    sudo dnf install systemtap
 
 GUI dependencies:
-
-If you want to build bitcoin-qt, make sure that the required packages for Qt development
-are installed. Qt 5 is necessary to build the GUI.
+If you want to build bitcoin-qt, make sure that the required packages 
+for Qt development are installed. Qt 5 is necessary to build the GUI.
 To build without GUI pass `--without-gui`.
-
 To build with Qt 5 you need the following:
-
-    sudo dnf install qt5-qttools-devel qt5-qtbase-devel
+sudo dnf install qt5-qttools-devel qt5-qtbase-devel
 
 Additionally, to support Wayland protocol for modern desktop environments:
-
-    sudo dnf install qt5-qtwayland
+sudo dnf install qt5-qtwayland
 
 libqrencode (optional) can be installed with:
+sudo dnf install qrencode-devel
 
-    sudo dnf install qrencode-devel
 
-Once these are installed, they will be found by configure and a bitcoin-qt executable will be
-built by default.
 
-Notes
------
+
+
+Once these are installed, they will be found by configure and a bitcoin-qt 
+executable will be built by default.
+
 The release is built with GCC and then "strip bitcoind" to strip the debug
 symbols, which reduces the executable size by about 90%.
-
 miniupnpc
----------
 
 [miniupnpc](https://miniupnp.tuxfamily.org) may be used for UPnP port mapping.  It can be downloaded from [here](
 https://miniupnp.tuxfamily.org/files/).  UPnP support is compiled in and
@@ -131,7 +157,6 @@ turned off by default.
 
 Berkeley DB
 -----------
-
 The legacy wallet uses Berkeley DB. To ensure backwards compatibility it is
 recommended to use Berkeley DB 4.8. If you have to build it yourself, and don't
 want to use any other libraries built in depends, you can do:
