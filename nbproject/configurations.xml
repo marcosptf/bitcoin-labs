@@ -2,6 +2,17 @@
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
+      <df name="labs">
+        <in>comandos-bitcoin.marcosptf</in>
+        <in>man-bench-bitcoin.marcosptf</in>
+        <in>man-bitcoin-cli.marcosptf</in>
+        <in>man-bitcoin-qt.marcosptf</in>
+        <in>man-bitcoin-tx.marcosptf</in>
+        <in>man-bitcoin-util.marcosptf</in>
+        <in>man-bitcoin-wallet.marcosptf</in>
+        <in>man-bitcoind.marcosptf</in>
+        <in>man-docker-compose.marcosptf</in>
+      </df>
       <df name="src">
         <df name="bench">
           <in>addrman.cpp</in>
@@ -880,6 +891,24 @@
         </preBuild>
       </makefileType>
       <item path="labs.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/comandos-bitcoin.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bench-bitcoin.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bitcoin-cli.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bitcoin-qt.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bitcoin-tx.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bitcoin-util.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bitcoin-wallet.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-bitcoind.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/man-docker-compose.marcosptf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/addrdb.cpp" ex="false" tool="1" flavor2="0">
       </item>

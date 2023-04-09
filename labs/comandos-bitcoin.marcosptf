@@ -1,0 +1,31 @@
+############################################################
+#destrinchando todos os comandos do bitcoin-core localhost
+############################################################
+
+#maquina onde estamos fazendo este labs
+Linux fedora 5.18.11-100.fc35.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Jul 12 22:52:03 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+
+#arquivos executaveis dentro deste diretorio
+[marcosptf@fedora ~]$ cd /usr/local/bin/
+docker-compose
+bitcoind
+bitcoin-cli
+bitcoin-tx
+bitcoin-wallet
+bitcoin-util
+test_bitcoin
+bench_bitcoin
+bitcoin-qt
+test_bitcoin-qt
+
+
+#este comando executa abertura de um syncronismo para a blockchain
+#onde começa baixar toda a rede para o computador e ali  ja vira um node de btc
+#localhost e um servidor onde respode comandos do bitcoin-cli
+[marcosptf@fedora bin]$ ./bitcoind printtoconsole
+
+
+
+[marcosptf@fedora bin]$ ./bitcoind printtoconsole
+
+

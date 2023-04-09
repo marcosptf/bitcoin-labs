@@ -1,0 +1,78 @@
+f@fedora bin]$ ./bench_bitcoin -h
+Usage:  bench_bitcoin [options]
+
+Options:
+
+  -?
+       Print this help message and exit
+
+  -asymptote=<n1,n2,n3,...>
+       Test asymptotic growth of the runtime of an algorithm, if supported by
+       the benchmark
+
+  -filter=<regex>
+       Regular expression filter to select benchmark by name (default: .*)
+
+  -list
+       List benchmarks without executing them
+
+  -min-time=<milliseconds>
+       Minimum runtime per benchmark, in milliseconds (default: 10)
+
+  -output-csv=<output.csv>
+       Generate CSV file with the most important benchmark results
+
+  -output-json=<output.json>
+       Generate JSON file with all benchmark results
+
+  -priority-level=<l1,l2,l3>
+       Run benchmarks of one or multiple priority level(s) (low,high,all),
+       default: 'all'
+
+  -sanity-check
+       Run benchmarks for only one iteration with no output
+
+Description:
+
+  bench_bitcoin executes microbenchmarks. The quality of the benchmark results
+  highly depend on the stability of the machine. It can sometimes be difficult
+  to get stable, repeatable results, so here are a few tips:
+
+  * Use pyperf [1] to disable frequency scaling, turbo boost etc. For best
+    results, use CPU pinning and CPU isolation (see [2]).
+
+  * Each call of run() should do exactly the same work. E.g. inserting into
+    a std::vector doesn't do that as it will reallocate on certain calls. Make
+    sure each run has exactly the same preconditions.
+
+  * If results are still not reliable, increase runtime with e.g.
+    -min-time=5000 to let a benchmark run for at least 5 seconds.
+
+  * bench_bitcoin uses nanobench [3] for which there is extensive
+    documentation available online.
+
+Environment Variables:
+
+  To attach a profiler you can run a benchmark in endless mode. This can be
+  done with the environment variable NANOBENCH_ENDLESS. E.g. like so:
+
+    NANOBENCH_ENDLESS=MuHash ./bench_bitcoin -filter=MuHash
+
+  In rare cases it can be useful to suppress stability warnings. This can be
+  done with the environment variable NANOBENCH_SUPPRESS_WARNINGS, e.g:
+
+    NANOBENCH_SUPPRESS_WARNINGS=1 ./bench_bitcoin
+
+Notes:
+
+  1. pyperf
+     https://github.com/psf/pyperf
+
+  2. CPU pinning & isolation
+     https://pyperf.readthedocs.io/en/latest/system.html
+
+  3. nanobench
+     https://github.com/martinus/nanobench
+
+[marcosptf@fedora bin]$ 
+
