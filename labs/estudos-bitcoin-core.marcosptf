@@ -1,0 +1,33 @@
+###############
+#bitcoin-labs #
+###############
+
+###########################
+#tarefas para realizar
+0.estudos e execucao de todos os comandos da doc oficial para biticoin developer
+https://developer.bitcoin.org/devguide/index.html
+
+1.aprendizado da estrutura de arquivos do projeto
+
+
+2.leitura do contributing
+
+
+3.leitura do livro:
+Mastering bitcoin
+https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch01.asciidoc
+
+4.leitura do livro:
+Mastering the Lightning Network!
+https://github.com/lnbook/lnbook/blob/develop/01_introduction.asciidoc
+
+5.realizacao da build localhost no fedora
+subindo local e rodando os testes
+
+6.verificar possibilidades na contribuicao
+->escrevendo cobertura de testes com python
+->verificando bugs na issues no github
+->verificando e lendo novos codigos no MR
+
+
+

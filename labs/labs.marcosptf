@@ -1,32 +1,3 @@
-###############
-#bitcoin-labs #
-###############
-
-###########################
-#tarefas para realizar
-1.aprendizado da estrutura de arquivos do projeto
-
-2.leitura do contributing
-
-
-3.leitura do livro:
-Mastering bitcoin
-https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch01.asciidoc
-
-4.leitura do livro:
-Mastering the Lightning Network!
-https://github.com/lnbook/lnbook/blob/develop/01_introduction.asciidoc
-
-5.realizacao da build localhost no fedora
-subindo local e rodando os testes
-
-6.verificar possibilidades na contribuicao
-->escrevendo cobertura de testes com python
-->verificando bugs na issues no github
-->verificando e lendo novos codigos no MR
-
-
-
 #####################################
 #estrutura de diretorios do bitcoin
 .tx/
@@ -63,6 +34,17 @@ test/functional/test_runner.py
 make # use "-j N" for N parallel jobs
 make install # optional
 ```
+
+
+
+######################################
+#passos para realizar build com lcov
+https://github.com/bitcoin/bitcoin/blob/8d6f9210d90b350a9248f853ed8c559ef5e12505/doc/developer-notes.md#compiling-for-test-coverage
+#A coverage report will now be accessible at `./test_bitcoin.coverage/index.html`.
+./autogen.sh
+./configure --enable-lcov
+make
+make cov
 
 
 Memory Requirements

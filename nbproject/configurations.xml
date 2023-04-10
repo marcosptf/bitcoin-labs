@@ -4,6 +4,7 @@
     <df root="." name="0">
       <df name="labs">
         <in>comandos-bitcoin.marcosptf</in>
+        <in>estudos-bitcoin-core.marcosptf</in>
         <in>man-bench-bitcoin.marcosptf</in>
         <in>man-bitcoin-cli.marcosptf</in>
         <in>man-bitcoin-qt.marcosptf</in>
@@ -893,6 +894,11 @@
       <item path="labs.marcosptf" ex="false" tool="3" flavor2="0">
       </item>
       <item path="labs/comandos-bitcoin.marcosptf" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="labs/estudos-bitcoin-core.marcosptf"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="labs/man-bench-bitcoin.marcosptf" ex="false" tool="3" flavor2="0">
       </item>

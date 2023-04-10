@@ -12,8 +12,6 @@
       </df>
       <df name="autom4te.cache">
       </df>
-      <df name="bitcoin">
-      </df>
       <df name="build-aux">
         <df name="m4">
         </df>
@@ -165,6 +163,7 @@
       </df>
       <df name="labs">
         <in>comandos-bitcoin.marcosptf</in>
+        <in>estudos-bitcoin-core.marcosptf</in>
         <in>man-bench-bitcoin.marcosptf</in>
         <in>man-bitcoin-cli.marcosptf</in>
         <in>man-bitcoin-qt.marcosptf</in>
